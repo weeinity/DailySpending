@@ -1,0 +1,19 @@
+Development Plan
+
+1. Main Functionalities
+2. UI Design
+	Icon - in progress
+		Spending Record - Done
+		Report		- Done
+		Message		- Done
+		Details		- Done
+	Splash 
+		Dynamic splash implement?
+		Image Backgroud for splash
+3. UX Design
+4. Data
+	Sample Data - Done
+	Data Format - To be polished
+	Data storage 
+		Local file
+		Cloud

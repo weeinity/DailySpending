@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="DailySpending.PersonalFinPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DailySpending"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Grid Background="#FF7E0028">
+    	<!--Grid.Background>
+            <Marked/>
+    		<ImageBrush ImageSource="ms-appx:///Assets/SplashScreen.png"/>
+    	</Grid.Background-->
+		<TextBlock HorizontalAlignment="Left" Height="76" Margin="44,10,0,0" TextWrapping="Wrap" Text="Personal Assets" VerticalAlignment="Top" Width="413" FontSize="48" FontFamily="Yu Gothic"/>
+		<Path Data="M30,38 L369.072,38" Fill="White" HorizontalAlignment="Left" Height="5" Margin="52.5,107,0,0" Stretch="Fill" Stroke="White" UseLayoutRounding="False" VerticalAlignment="Top" Width="1039.5" StrokeThickness="10"/>
+		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Balance" VerticalAlignment="Top" Margin="53,156,0,0" Height="32" Width="221" FontSize="29.333"/>
+		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Debt" VerticalAlignment="Top" Margin="53,206,0,0" Height="32" Width="221" FontSize="29.333"/>
+    </Grid>
+</UserControl>

@@ -102,6 +102,33 @@ namespace DailySpendingLib
             }
         }
 
+        public async void SaveFile()
+        {
+            try
+            {
+                String xml = string.Empty;
+                //scenario2OriginalData.Document.GetText(Windows.UI.Text.TextGetOptions.None, out xml);
+
+                var doc = new Windows.Data.Xml.Dom.XmlDocument();
+                doc.LoadXml(xml);
+
+                // Mark 'hot' attribute to '1' if 'sell10days' is greater than 'InStore'
+                var xpath = "/products/product[Sell10day>InStore]/@hot";
+                var hotAttributes = doc.SelectNodes(xpath);
+                for (uint index = 0; index < hotAttributes.Length; index++)
+                {
+                    hotAttributes.Item(index).NodeValue = "1";
+                }
+
+                //Scenario.RichEditBoxSetMsg(scenario2Result, doc.GetXml(), true);
+                //scenario2BtnSave.IsEnabled = true;  // enable Save button
+            }
+            catch (Exception exp)
+            {
+                //Scenario.RichEditBoxSetError(scenario2Result, exp.Message);
+            }
+        }
+
 
         public class ItemData
         {

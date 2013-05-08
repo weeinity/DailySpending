@@ -10,16 +10,8 @@
     <Grid Background="#FF720000">
 		<TextBlock HorizontalAlignment="Left" Height="76" Margin="44,10,0,0" TextWrapping="Wrap" Text="Finance Details" VerticalAlignment="Top" Width="413" FontSize="48" FontFamily="Yu Gothic"/>
 		<Path Data="M30,38 L369.072,38" Fill="White" HorizontalAlignment="Left" Height="5" Margin="52.5,107,0,0" Stretch="Fill" Stroke="White" UseLayoutRounding="False" VerticalAlignment="Top" Width="1039.5" StrokeThickness="10"/>
-		<ListView x:Name="DetailList" HorizontalAlignment="Left" Height="522" Margin="53,160,0,0" VerticalAlignment="Top" Width="1039">
-			<x:String>Item 1</x:String>
-			<ListBoxItem>
-				<ListBoxItem.ContentTransitions>
-					<TransitionCollection>
-						<AddDeleteThemeTransition/>
-					</TransitionCollection>
-				</ListBoxItem.ContentTransitions>
-			</ListBoxItem>
-			<x:String>Item 2</x:String>
-		</ListView>
+        <ListView x:Name="DetailList" HorizontalAlignment="Left" Height="522" Width="1039" Margin="53,160,0,0" VerticalAlignment="Top" 
+                  ItemTemplate="{StaticResource MessageListImageTemplate}"/>
+        
     </Grid>
 </UserControl>

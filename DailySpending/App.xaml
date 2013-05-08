@@ -15,6 +15,21 @@
                 <ResourceDictionary Source="Common/StandardStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
+            <DataTemplate x:Key="MessageListImageTemplate">
+                <Grid HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="20,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Margin="0,8,0,8" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Image Source="{Binding Image}" Margin="0" Stretch="UniformToFill"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10,8,0,0">
+                        <TextBlock TextTrimming="WordEllipsis" Text="{Binding Title}" Width="200" Height="20"/>
+                        <TextBlock Text="{Binding Subtitle}" TextWrapping="Wrap" TextTrimming="WordEllipsis" Width="200" Height="20" Margin="0,0,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

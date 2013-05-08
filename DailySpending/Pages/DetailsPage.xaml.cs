@@ -19,14 +19,19 @@ namespace DailySpending
 {
     public sealed partial class DetailsPage : UserControl
     {
+        FileManager.ItemData itemData = null;
+
         public DetailsPage()
         {
             this.InitializeComponent();
+            this.DataLoad();
         }
         private void DataLoad()
         {
             FileManager fm = new FileManager();
-            fm.ReadSampleData();
+            this.itemData = new FileManager.ItemData();
+            fm.ReadSampleData(this.itemData);
+            DetailList.ItemsSource = this.itemData.Collection;
         }
 
     }

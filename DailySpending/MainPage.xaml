@@ -9,15 +9,15 @@
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="718*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="708*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-    		<ColumnDefinition Width="200*"/>
-    		<ColumnDefinition Width="1166*"/>
+    		<ColumnDefinition Width="250*"/>
+    		<ColumnDefinition Width="1116*"/>
     	</Grid.ColumnDefinitions>
         <local:TopBar Grid.Column="0" Grid.ColumnSpan="2"/>
-    	<StackPanel Margin="0" Background="#FF8F6D6D" Grid.Column="0" Grid.Row="1">
+        <StackPanel Margin="0" Background="#FF3A3A3A" Grid.Column="0" Grid.Row="1">
     		<local:ToolBar Margin="0" />
     	</StackPanel>
     	<local:SpendingRecordPage x:Name="SpendingRecPage" Grid.Column="1" Grid.Row="1"  Margin="0,0,0,0" Visibility="Collapsed" Grid.RowSpan="2"/>

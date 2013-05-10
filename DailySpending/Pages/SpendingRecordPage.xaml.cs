@@ -26,10 +26,11 @@ namespace DailySpending
 
         private void SaveAccountRecord_Click(object sender, RoutedEventArgs e)
         {
-            //FileManager fm = new FileManager();
+            FileManager fm = new FileManager();
             //fm.ReadXMLFile();
             //fm.ReadSampleData();
             //fm.ReadFile();
+            fm.UpdateXMLFile(1, "Amount", "2");
             
         }
     }

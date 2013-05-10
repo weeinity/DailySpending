@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <DailySpending>
- <Record>
+ <Record id="1">
   <SpendingIncomeType>Spending, Income, Transfer, Borrow</SpendingIncomeType>
   <Amount>10</Amount>
   <SpendingCategory>Food, Transportation, Shopping, Entainment, Education, Living, Investment</SpendingCategory>
@@ -12,7 +12,7 @@
   <Month>5</Month>
   <Day>2</Day>
  </Record>
-  <Record>
+  <Record id="2">
     <SpendingIncomeType>Spending, Income, Transfer, Borrow</SpendingIncomeType>
     <Amount>200</Amount>
     <SpendingCategory>Food, Transportation, Shopping, Entainment, Education, Living, Investment</SpendingCategory>

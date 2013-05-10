@@ -5,6 +5,7 @@ using Windows.Foundation;
 using System.Xml.Linq;
 using System.IO;
 using System.Linq;
+using System.Xml;
 
 namespace DailySpendingLib
 {
@@ -60,37 +61,51 @@ namespace DailySpendingLib
             }
         }
 
-        public async void ReadXMLFile()
+        
+        public void InsertItem(StorageFile updatedFile, DataFormat insertItem)
         {
-            XDocument xmlDoc;
+ 
+        }
+        public async void UpdateXMLFile(int recordID, string updateItem, string newValue)
+        {
+            this.UpdateXMLFile(await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///../DailySpendingLib/SampleData/SampleData.xml")), recordID, updateItem, newValue);
+        }
+        public async void UpdateXMLFile(StorageFile updatedFile, int recordID, string updateItem, string newValue)
+        {
+            XDocument dataFile;
+            XElement spendingPage;
 
-            if (this.localFolder == null)
-                return;
-
-            this.file = await localFolder.GetFileAsync(this.fileName);
-            
-            using (StreamReader sr = new StreamReader(await this.file.OpenStreamForReadAsync()))
+            XmlReader xr;
+            using (StreamReader sr = new StreamReader(await updatedFile.OpenStreamForReadAsync()))
             {
-                xmlDoc = XDocument.Load(sr);
-            }
-            
-            XElement xmlTree = new XElement("Root",
-                new XAttribute("Att1", "AttributeContent"),
-                new XElement("Child",
-                    new XText("Some text"),
-                    new XElement("GrandChild", "element content")
-                )
-            );
-            IEnumerable<XElement> de =
-                from el in xmlTree.Descendants("Child")
-                select el;
+                xr = XmlReader.Create(sr);
+                spendingPage = XElement.Load(xr);
 
-            XName tmp;
-            foreach (XElement el in de)
-            {
-                tmp = el.Name;
+                XElement record = spendingPage.Elements("Record").Where(e => (string)e.Attribute("id") == recordID.ToString()).FirstOrDefault();
+
+                if (record != null)
+                {
+                    record.SetElementValue(updateItem, newValue);
+                }
             }
 
+            XmlWriterSettings xws = new XmlWriterSettings() { Async = true, Indent = true, CloseOutput = true };
+            this.file = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("jielitest.xml");
+
+            Stream outputStream = await this.file.OpenStreamForWriteAsync();
+
+            using (XmlWriter xmlWrit = XmlWriter.Create(outputStream, xws))
+            {
+                await xmlWrit.WriteNodeAsync(xr, false);
+                xmlWrit.Flush();
+                //await xmlWrit.WriteStringAsync(@"<DailySpending></DailySpending>");
+            }
+        
+        }
+
+        public void DeleteItem(StorageFile updatedFile, int deleteRecID)
+        {
+ 
         }
         public async void CreateNewFile()
         {
@@ -101,6 +116,38 @@ namespace DailySpendingLib
                 await Windows.Storage.FileIO.WriteTextAsync(this.file, "Hello");
             }
         }
+        //public async void ReadXMLFile()
+        //{
+        //    XDocument xmlDoc;
+
+        //    if (this.localFolder == null)
+        //        return;
+
+        //    this.file = await localFolder.GetFileAsync(this.fileName);
+            
+        //    using (StreamReader sr = new StreamReader(await this.file.OpenStreamForReadAsync()))
+        //    {
+        //        xmlDoc = XDocument.Load(sr);
+        //    }
+            
+        //    XElement xmlTree = new XElement("Root",
+        //        new XAttribute("Att1", "AttributeContent"),
+        //        new XElement("Child",
+        //            new XText("Some text"),
+        //            new XElement("GrandChild", "element content")
+        //        )
+        //    );
+        //    IEnumerable<XElement> de =
+        //        from el in xmlTree.Descendants("Child")
+        //        select el;
+
+        //    XName tmp;
+        //    foreach (XElement el in de)
+        //    {
+        //        tmp = el.Name;
+        //    }
+
+        //}
 
         public async void SaveFile()
         {

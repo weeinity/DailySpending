@@ -103,13 +103,13 @@
 
     
     <Grid Background="#FF004400" Margin="0,0,-200,-126">
-    	<Rectangle Fill="#FFFF9700" HorizontalAlignment="Left" Height="103" Margin="94,209,0,0" Stroke="White" StrokeThickness="5" VerticalAlignment="Top" Width="962" RadiusX="10" RadiusY="10"/>
+    	<Rectangle Fill="#FFFF9700" HorizontalAlignment="Left" Height="79" Margin="83,185,0,0" Stroke="White" StrokeThickness="5" VerticalAlignment="Top" Width="975" RadiusX="10" RadiusY="10"/>
 
     	<TextBlock HorizontalAlignment="Left" Height="48" Margin="44,10,0,0" TextWrapping="Wrap" Text="Spending Record" VerticalAlignment="Top" Width="390" FontSize="40" FontFamily="Yu Gothic"/>
 		<Path Data="M30,38 L369.072,38" Fill="White" HorizontalAlignment="Left" Height="5" Margin="52.5,70,0,0" Stretch="Fill" Stroke="White" UseLayoutRounding="False" VerticalAlignment="Top" Width="1039.5" StrokeThickness="10"/>
         <Button Content="Save" Height="57" Margin="898,8,0,0" VerticalAlignment="Top" Width="187" Click="SaveAccountRecord_Click"/>
     	
-		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Margin="94,222,0,0" Height="66" Width="944" Foreground="White" FontSize="64" FlowDirection="RightToLeft"/>
+		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Margin="96,190,0,0" Height="66" Width="944" Foreground="White" FontSize="64" FlowDirection="RightToLeft"/>
 		<!--ListBox HorizontalAlignment="Left" Height="206" VerticalAlignment="Top" Width="420" Margin="69,484,0,0">
 			<ListBoxItem Background="#FFFF7575"/>
 		</ListBox-->

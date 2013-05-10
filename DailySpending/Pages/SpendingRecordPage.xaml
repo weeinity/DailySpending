@@ -6,18 +6,108 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+	<UserControl.Resources>
+		<Style x:Key="RadioButtonStyle1" TargetType="RadioButton">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{StaticResource RadioButtonContentForegroundThemeBrush}"/>
+			<Setter Property="Padding" Value="1,4,0,0"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Left"/>
+			<Setter Property="VerticalContentAlignment" Value="Top"/>
+			<Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+			<Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="RadioButton">
+						<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="PointerOver">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundEllipse">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource RadioButtonPointerOverBorderThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundEllipse">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource RadioButtonPressedBorderThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Disabled">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundEllipse">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource RadioButtonDisabledBorderThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource RadioButtonContentDisabledForegroundThemeBrush}"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="CheckStates">
+									<VisualState x:Name="Checked">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="CheckGlyph"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Unchecked"/>
+									<VisualState x:Name="Indeterminate"/>
+								</VisualStateGroup>
+								<VisualStateGroup x:Name="FocusStates">
+									<VisualState x:Name="Focused">
+										<Storyboard>
+											<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualWhite"/>
+											<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualBlack"/>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Unfocused"/>
+									<VisualState x:Name="PointerFocused"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Grid>
+								<Grid>
+									<Rectangle x:Name="BackgroundEllipse" Stroke="{StaticResource RadioButtonBorderThemeBrush}" StrokeThickness="{StaticResource RadioButtonBorderThemeThickness}" UseLayoutRounding="False">
+										<Rectangle.Fill>
+											<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+												<GradientStop Color="#FFE4E4E4"/>
+												<GradientStop Color="#FFE4E4E4" Offset="1"/>
+												<GradientStop Color="White" Offset="0.5"/>
+											</LinearGradientBrush>
+										</Rectangle.Fill>
+									</Rectangle>
+									<Rectangle x:Name="CheckGlyph" Opacity="0" UseLayoutRounding="False">
+										<Rectangle.Fill>
+											<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+												<GradientStop Color="#FFFFF059"/>
+												<GradientStop Color="#FFFFFBCF" Offset="0.5"/>
+												<GradientStop Color="#FFFFF059" Offset="1"/>
+											</LinearGradientBrush>
+										</Rectangle.Fill>
+									</Rectangle>
+									<Rectangle x:Name="FocusVisualWhite" Height="29" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1" Width="29"/>
+									<Rectangle x:Name="FocusVisualBlack" Height="29" Opacity="0" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1" Width="29"/>
+								</Grid>
+								<ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF404040"/>
+							</Grid>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
+
     
     <Grid Background="#FF004400" Margin="0,0,-200,-126">
     	<Rectangle Fill="#FFFF9700" HorizontalAlignment="Left" Height="103" Margin="94,209,0,0" Stroke="White" StrokeThickness="5" VerticalAlignment="Top" Width="962" RadiusX="10" RadiusY="10"/>
 
-    	<TextBlock HorizontalAlignment="Left" Height="76" Margin="44,10,0,0" TextWrapping="Wrap" Text="Spending Record" VerticalAlignment="Top" Width="413" FontSize="48" FontFamily="Yu Gothic"/>
-		<Path Data="M30,38 L369.072,38" Fill="White" HorizontalAlignment="Left" Height="5" Margin="52.5,107,0,0" Stretch="Fill" Stroke="White" UseLayoutRounding="False" VerticalAlignment="Top" Width="1039.5" StrokeThickness="10"/>
-        <Button Content="Save" Height="57" Margin="905,29,0,0" VerticalAlignment="Top" Width="187" Click="SaveAccountRecord_Click"/>
-        
-    	<Button Content="Spending" HorizontalAlignment="Left" Height="55" Margin="94,132,0,0" VerticalAlignment="Top" Width="224" FontSize="26.667"/>
-		<Button Content="Income" HorizontalAlignment="Left" Height="55" Margin="335,132,0,0" VerticalAlignment="Top" Width="224" FontSize="26.667"/>
-		<Button Content="Transfer" HorizontalAlignment="Left" Height="55" Margin="579,132,0,0" VerticalAlignment="Top" Width="223" FontSize="26.667"/>
-		<Button Content="Borrow" HorizontalAlignment="Left" Height="55" Margin="819,132,0,0" VerticalAlignment="Top" Width="224" FontSize="26.667"/>
+    	<TextBlock HorizontalAlignment="Left" Height="48" Margin="44,10,0,0" TextWrapping="Wrap" Text="Spending Record" VerticalAlignment="Top" Width="390" FontSize="40" FontFamily="Yu Gothic"/>
+		<Path Data="M30,38 L369.072,38" Fill="White" HorizontalAlignment="Left" Height="5" Margin="52.5,70,0,0" Stretch="Fill" Stroke="White" UseLayoutRounding="False" VerticalAlignment="Top" Width="1039.5" StrokeThickness="10"/>
+        <Button Content="Save" Height="57" Margin="898,8,0,0" VerticalAlignment="Top" Width="187" Click="SaveAccountRecord_Click"/>
     	
 		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top" Margin="94,222,0,0" Height="66" Width="944" Foreground="White" FontSize="64" FlowDirection="RightToLeft"/>
 		<!--ListBox HorizontalAlignment="Left" Height="206" VerticalAlignment="Top" Width="420" Margin="69,484,0,0">
@@ -50,6 +140,10 @@
         	<ListBoxItem Content="Children"/>
         	<ListBoxItem Content="Parents"/>
 		</ComboBox>
+        <RadioButton Content="Spending" HorizontalAlignment="Left" Margin="83,100,0,0" VerticalAlignment="Top" Width="240" GroupName="SpendingCate" IsChecked="True" Style="{StaticResource RadioButtonStyle1}" Height="65" FontSize="37.333"/>
+		<RadioButton Content="Income" HorizontalAlignment="Left" Margin="818,100,0,0" VerticalAlignment="Top" Width="240" GroupName="SpendingCate"  Style="{StaticResource RadioButtonStyle1}" Height="65" FontSize="37.333"/>
+		<RadioButton Content="Transfer" HorizontalAlignment="Left" Margin="573,100,0,0" VerticalAlignment="Top" Width="240" GroupName="SpendingCate" Style="{StaticResource RadioButtonStyle1}" Height="65" FontSize="37.333"/>
+		<RadioButton Content="Borrow" HorizontalAlignment="Left" Margin="328,100,0,0" VerticalAlignment="Top" Width="240" GroupName="SpendingCate" Style="{StaticResource RadioButtonStyle1}" Height="65" FontSize="37.333"/>
 
 
 

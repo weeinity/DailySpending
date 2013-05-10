@@ -96,9 +96,13 @@ namespace DailySpendingLib
 
             using (XmlWriter xmlWrit = XmlWriter.Create(outputStream, xws))
             {
+                await xmlWrit.WriteStartDocumentAsync();
+
                 await xmlWrit.WriteNodeAsync(xr, false);
                 xmlWrit.Flush();
                 //await xmlWrit.WriteStringAsync(@"<DailySpending></DailySpending>");
+                await xmlWrit.WriteEndElementAsync();
+                await xmlWrit.WriteEndDocumentAsync();
             }
         
         }

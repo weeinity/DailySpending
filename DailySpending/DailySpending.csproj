@@ -144,6 +144,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Details.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\Message.png" />
+    <Content Include="Assets\Record.png" />
+    <Content Include="Assets\Report.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\Splash.png" />
     <Content Include="Assets\SplashScreen.png" />

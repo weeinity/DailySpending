@@ -1,0 +1,7 @@
+Version 0.1: 
+
+This is a very basic class to use WebCam inside your own applications. The code is written using C# and used 
+the "avicap32.dll" by interop.
+
+To extend the class functionality, you can go to the following link and implement other functionalities.
+http://windowssdk.msdn.microsoft.com/library/default.asp?url=/library/en-us/Multimed/htm/_win32_using_video_capture.asp
